@@ -1,0 +1,94 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           halatro
+version:        0.1.0.0
+description:    A simple implementation of the basic Balatro ruleset in Haskell, including a terminal user interface.
+author:         Alex Dixon
+maintainer:     alexander.dixon@warwick.ac.uk
+copyright:      2025 Alex Dixon
+license:        BSD-3-Clause
+build-type:     Simple
+
+library
+  exposed-modules:
+      CourseworkOne
+      Halatro.BasicGame
+      Halatro.Constants
+      Halatro.Types
+  other-modules:
+      Paths_halatro
+  autogen-modules:
+      Paths_halatro
+  hs-source-dirs:
+      src
+  default-extensions:
+      RecordWildCards
+      LambdaCase
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , random
+    , text
+    , time
+  default-language: GHC2021
+
+executable halatro-exe
+  main-is: Main.hs
+  other-modules:
+      Halatro.Frontend
+      Halatro.Frontend.Types
+      Halatro.Frontend.Utils
+      Halatro.Frontend.Widgets
+      Paths_halatro
+  autogen-modules:
+      Paths_halatro
+  hs-source-dirs:
+      app
+  default-extensions:
+      RecordWildCards
+      LambdaCase
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , brick
+    , containers
+    , halatro
+    , random
+    , text
+    , time
+    , vty
+    , vty-crossplatform
+  default-language: GHC2021
+
+test-suite halatro-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_halatro
+  autogen-modules:
+      Paths_halatro
+  hs-source-dirs:
+      test
+  default-extensions:
+      RecordWildCards
+      LambdaCase
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , ansi-terminal
+    , base >=4.7 && <5
+    , containers
+    , halatro
+    , random
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , tasty-reporter-muffled
+    , text
+    , time
+  default-language: GHC2021
